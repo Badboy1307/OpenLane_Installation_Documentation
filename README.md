@@ -56,9 +56,9 @@ These below commands has been done in /Desktop directory
 
     git clone https://github.com/The-OpenROAD-Project/openlane.git
     cd OpenLane/
-    make openlane    ->installs OpenLane)
-    sudo make openlane    ->if permission denied)
-    mkdir pdks (making directory for PDKS ie Process Design Kit)
+    make openlane             ->installs OpenLane
+    sudo make openlane        ->if permission denied
+    mkdir pdks                ->making directory for PDKS ie Process Design Kit
     export PDK_ROOT=/home/badboy07/Desktop/openlane/pdks
     
 Note: badboy07 was the username used here so put your username instead of this one.
@@ -69,7 +69,7 @@ Note: badboy07 was the username used here so put your username instead of this o
     
 ## For normal testing of spm design
     export PDK_ROOT=/home/badboy07/Desktop/openlane/pdks/open_pdks/sky130
-    make test (testing of test design ie spm)
+    make test        ->testing of test design ie spm
     (or)
     sudo make test
     
