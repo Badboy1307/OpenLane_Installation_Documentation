@@ -281,7 +281,8 @@ This command is used for Circuit Validity Checker on the output spice. Voltage a
 This command is used for checking Antenna violations. Long metal lines and Vias introduce antenna violations. The antenna rule specifies the maximum tolerance for the ratio of a metal line area to the area of connected gates. VLSI process starts from the substrate, device layer and then metal layers.
 
 
-     Layout Generation by Magic Tool for SERV
+Layout Generation by Magic Tool for SERV
+ 
 Post Floorplanning
 
 
