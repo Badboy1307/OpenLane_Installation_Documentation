@@ -11,10 +11,11 @@
     sudo apt-get install klayout -> installing IC layout editor
     sudo snap install docker -> installing docker
     pip3 install fusesoc -> installing python library called FuseSoC
-    sudo apt install verilator -> installing Verilator
+    sudo apt-get install verilator -> installing Verilator
     sudo apt-get install magic ->installing magic, a layout tool
     sudo apt-get install opensta ->installing opensta, a GUI based web server
-    sudo apt install vim -> installing vim editor
+    sudo apt-get install vim -> installing vim editor
+    sudo apt-get install gtkwave -> to view simulation of verilog codes
 
 
 
@@ -56,8 +57,8 @@ These below commands has been done in /Desktop directory
 
     git clone https://github.com/The-OpenROAD-Project/openlane.git
     cd OpenLane/
-    make openlane             ->installs OpenLane
-    sudo make openlane        ->if permission denied
+    make pull-openlane             ->installs OpenLane
+    sudo make pull-openlane        ->if permission denied
     mkdir pdks                ->making directory for PDKS ie Process Design Kit
     export PDK_ROOT=/home/badboy07/Desktop/openlane/pdks
     
