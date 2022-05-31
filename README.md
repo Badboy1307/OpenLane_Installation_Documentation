@@ -4,6 +4,8 @@
 
 ## Linux Commands for installing prerequisites of OPENLANE
 
+For UBUNTU Systems >=22.04 LTS
+
     sudo apt install python3-pip -> this is for installing python3
     sudo apt-get install git -> installing git for github repository
     sudo apt-get install yosys -> installing RTL synthesis framework
@@ -16,7 +18,7 @@
     sudo apt-get install opensta ->installing opensta, a GUI based web server
     sudo apt-get install vim -> installing vim editor
     sudo apt-get install gtkwave -> to view simulation of verilog codes
-
+    sudo apt install -y build-essential python3 python3-venv python3-pip
 
 
 ## Conda download is also mandatory otherwise your openlane won’t download any pdks
@@ -39,7 +41,7 @@
 
      cd ..
      cd Downloads 
-     sh Miniconda3-latest-Linux-x86_64.sh (Your miniconda file will have a similar name)
+     sh Miniconda3-latest-Linux-x86_64.sh  or bash Miniconda3-latest-Linux-x86_64.sh (Your miniconda file will have a similar name)
      
      
 After running above command
@@ -48,31 +50,77 @@ You say Y/Yes to continue
 
 The download starts automatically and it will show in the end that download was successful
 
+Restart the terminal to see the changes to terminal.
+
+## Commands for removal of old UBUNTU docker 
+
+Docker versions which supports UBUNTU versions <22.04 requires these commands to be run in their pc 
+
+      sudo apt-get remove docker docker-engine docker.io containerd runc    --> Uninstall Old docker versions 
+      sudo apt-get update         -->update apt package index
+      sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release                  -->prerequisites for docker 
+
+     sudo mkdir -p /etc/apt/keyrings  --> Add Docker's GPG Keys
+     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg  -->Add Docker's GPG Keys
+     
+     echo \                                
+     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+     $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null                                             -->Use these command to set up the repository
+
+### Method 1  Installing Generally
+
+     sudo apt-get update              -->update apt package index
+     sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin         -->download latest docker
+  
+### Method 2  Installing Specific Version
+       
+     sudo apt-cache madison docker-ce  --> searching for latest versions available for your ubuntu version
+
+   The below image lists the versions of docker available 
+      
+      ![image](https://user-images.githubusercontent.com/60011091/171088618-cddfe077-0bb0-47f8-944f-d88fb3c8ef90.png)
+
+       sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io docker-compose-plugin  
+       
+   If for example <VERSION_STRING>= 5:20.10.16~3-0~ubuntu-jammy then, 
+       
+       sudo apt-get install docker-ce=5:20.10.16~3-0~ubuntu-jammy docker-ce-cli=5:20.10.16~3-0~ubuntu-jammy containerd.io docker-compose-plugin
+       
+  To ensure docker runs, run the below command
+
+       sudo docker run hello-world         
+    
 
 ## Commands for downloading OPENLANE and PDKS of the latest stable version
 
-This is just around 3.7 GB or even less as you already have all the prerequisites.
+This is just around 2.3 GB as you already have all the prerequisites.
 We can install this version in home directory or in Desktop or any directory of your choice.
 These below commands has been done in /Desktop directory
 
     git clone https://github.com/The-OpenROAD-Project/openlane.git
     cd OpenLane/
-    make pull-openlane             ->installs OpenLane
-    sudo make pull-openlane        ->if permission denied
-    mkdir pdks                ->making directory for PDKS ie Process Design Kit
-    export PDK_ROOT=/home/badboy07/Desktop/openlane/pdks
-    
-Note: badboy07 was the username used here so put your username instead of this one.
+    cd docker
+    sudo make                      ->  installs OpenLane  docker image 
 
-    make pdk    ->installs skywater_pdks & open_pdks)
-    sudo make pdk (if permission denied)
-    make test (initial testing of test design ie spm)
+If you get any fatal repository warning add these commands but your username could be different to the below commands
+
+
+Note: badboy07 was the username used here so put your username instead.
+
+    sudo git config --global --add safe.directory /home/badboy07/Desktop/OpenLane
+    cd ..
+    ls
+    export PDK_ROOT=/home/badboy07/Desktop/OpenLane/pdks
+    sudo make pdk   ->installs skywater_pdks & open_pdks
     
-## For normal testing of spm design
-    export PDK_ROOT=/home/badboy07/Desktop/openlane/pdks/open_pdks/sky130
-    make test        ->testing of test design ie spm
-    (or)
-    sudo make test
+ ## For normal testing of spm design
+    
+    sudo make test  ->initial testing of test design ie spm
+    
     
 Note: The below screenshots may vary depending on OpenLane versions downloaded using above commands.
 
@@ -87,8 +135,7 @@ Note: The below screenshots may vary depending on OpenLane versions downloaded u
 
 
 
-
-    make mount         ->to mount OpenLane on docker
+  
     sudo make mount    ->if permission denied
     
    ![image](https://user-images.githubusercontent.com/60011091/134452503-e9564660-bc54-4976-aba7-a7ff90e97a2d.png)
@@ -244,12 +291,6 @@ There are two types of Routing ie -Global routing: Generates routing guides -Det
 
 ![image](https://user-images.githubusercontent.com/60011091/134455873-81fd49ea-35f1-457d-9c85-c471b1be56af.png)
 
-
-
-    write_powered_verilog
-    set_netlist $::env(lvs_result_file.tag).powered.v
-     
-These commands write Verilog code from the netlist after we have set it in the file after routing.
 
     run_magic
 This command generates Layout
