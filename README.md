@@ -111,7 +111,7 @@ If you get any fatal repository warning add these commands but your username cou
 
 Note: badboy07 was the username used here so put your username instead.
 
-    sudo git config --global --add safe.directory /home/badboy07/Desktop/OpenLane
+    sudo git config --global --add safe.directory /home/**badboy07**/Desktop/OpenLane
     cd ..
     ls
     export PDK_ROOT=/home/badboy07/Desktop/OpenLane/pdks
@@ -162,7 +162,9 @@ Note: instead of picorv32a you can use your design instead
 
 ## Logic Synthesis Tool Flow for Custom Design SERV
 
-The above image shows the flow of Yosys. Yosys takes RTL code and .lib files as input and netlist as output. Netlist is the standard cell representation of the design.
+![image](https://user-images.githubusercontent.com/60011091/171186475-3ac7eec8-fc9f-4783-88cc-7f623d73c3a6.png)
+
+ The above image shows the flow of Yosys. Yosys takes RTL code and .lib files as input and netlist as output. Netlist is the standard cell representation of the design.
 
 
 Yosys flow
@@ -271,7 +273,6 @@ This command perform global placement and detailed placement of cells of the des
 
 
 Placing the cell on the floorplan rows aligned with sites. Connected cells should be placed close to each other to reduce the interconnect delay. It is done in two steps ie Global and Detailed Placement. In global placement , the approximate locations for cells is decided by placing cells in global bins. In detailed placement, cells are Placed without over lapping.
-
 
 
     run_cts
