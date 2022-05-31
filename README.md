@@ -52,7 +52,7 @@ The download starts automatically and it will show in the end that download was 
 
 Restart the terminal to see the changes to terminal.
 
-## Commands for removal of old UBUNTU docker 
+## Commands for removal of old UBUNTU docker (Only for versions < 22.04) 
 
 Docker versions which supports UBUNTU versions <22.04 requires these commands to be run in their pc 
 
