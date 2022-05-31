@@ -82,7 +82,7 @@ Docker versions which supports UBUNTU versions <22.04 requires these commands to
 
    The below image lists the versions of docker available 
       
-      ![image](https://user-images.githubusercontent.com/60011091/171088618-cddfe077-0bb0-47f8-944f-d88fb3c8ef90.png)
+   ![image](https://user-images.githubusercontent.com/60011091/171088618-cddfe077-0bb0-47f8-944f-d88fb3c8ef90.png)
 
        sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io docker-compose-plugin  
        
